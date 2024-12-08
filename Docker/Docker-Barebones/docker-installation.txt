@@ -1,0 +1,27 @@
+#Docker Installation
+#--------------------------->
+
+1. sudo apt update
+2. sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+3. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+4. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+5. sudo apt update
+6. sudo apt install -y docker-ce docker-ce-cli containerd.io
+7. sudo systemctl status docker
+
+#Use "q" to exit out
+
+#Run Docker Without sudo (Optional)
+#------------------------------------>
+
+1. sudo groupadd docker
+2. sudo usermod -aG docker $USER
+#Then if you are using mobaxterm just duplicate the session and close the old one
+#Varify whether docker is accassable Without sudo: docker ps -a
+
+#Docker-Hub-Login:
+-------------------->
+1. docker login -u <email id>
+2. Password:
+3. Succesfull login
+

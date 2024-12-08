@@ -1,0 +1,16 @@
+#Docker-Getting-Started-Up!!
+
+#What is docker?!
+----------------->
+
+Docker is like the container ship of the software world. 🐳 It's a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow developers to package up an application with all the parts it needs, such as libraries and other dependencies, and ship it all out as one package.
+
+The magic of Docker is that it ensures your application always runs the same, regardless of where it's deployed. This eliminates the classic "but it worked on my machine" problem. With Docker, you can:
+
+Build your code into containers.
+Share your containers through Docker Hub.
+Run those containers on any machine with Docker installed.
+
+Think of it as having a consistent, portable environment for your apps that runs the same way across development, testing, and production. This brings efficiency, consistency, and scalability to software development and deployment.
+
+#More detailed info would be given out in Docker-intro.world file
