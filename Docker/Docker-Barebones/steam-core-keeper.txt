@@ -1,0 +1,1 @@
+docker run -d -p 27015:27036 -v /home/agt/HDD/docker/CoreKeeperServer:/home/steam/steamcmd/steamapps/common/CoreKeeper steamcmd/steamcmd /home/steam/steamcmd/steamapps/common/CoreKeeper/CoreKeeper.x86_64 -batchmode -nographics -port 27015

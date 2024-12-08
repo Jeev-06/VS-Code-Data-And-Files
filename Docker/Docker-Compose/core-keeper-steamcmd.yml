@@ -1,0 +1,18 @@
+#Core-Keeper
+services:
+  core-keeper:
+    container_name: core-keeper-dedicated
+    image: escaping/core-keeper-dedicated
+    ports:
+      - 27015:27015
+    volumes:
+      - /home/agt/docker/core-keeper/server-files:/home/steam/core-keeper-dedicated
+      - /home/agt/docker/core-keeper/server-data:/home/steam/core-keeper-data
+    restart: unless-stopped
+    env_file:
+      - path: override.env
+        required: false
+    stop_grace_period: 2m
+volumes:
+    server-files:
+    server-data:
