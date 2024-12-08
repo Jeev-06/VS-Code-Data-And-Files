@@ -4,6 +4,7 @@ Create New Repos:
 echo "# VS-Code-Data-And-Files" >> README.md
 git init
 git add README.md
+git add .
 git commit -m "first commit"
 git branch -M Master
 git remote add origin https://github.com/AbhiGT997/VS-Code-Data-And-Files.git
