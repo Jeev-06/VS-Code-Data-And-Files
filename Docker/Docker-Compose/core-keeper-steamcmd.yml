@@ -16,3 +16,50 @@ services:
 volumes:
     server-files:
     server-data:
+
+#Core Keeper - Latest Version Update
+version: '3.8'
+services:
+  core-keeper:
+    container_name: core-keeper-dedicated
+    image: escaping/core-keeper-dedicated:latest
+    ports:
+      - "27015:27015/udp"
+    volumes:
+      - /home/agt/docker/core-keeper/server-files:/home/steam/core-keeper-dedicated
+      - /home/agt/docker/core-keeper/server-data:/home/steam/core-keeper-data
+    restart: unless-stopped
+    env_file:
+      - override.env
+    stop_grace_period: 2m
+
+
+#Back-up Mounting
+
+version: '3.8'
+services:
+  core-keeper:
+    container_name: core-keeper-dedicated
+    image: escaping/core-keeper-dedicated:latest
+    ports:
+      - "27015:27015/udp"
+    volumes:
+      - /home/agt/docker/core-keeper/server-files-backup:/home/steam/core-keeper-dedicated
+      - /home/agt/docker/core-keeper/server-data-backup:/home/steam/core-keeper-data
+    restart: unless-stopped
+    env_file:
+      - override.env
+    stop_grace_period: 2m
+
+
+#5. Cross-Check SteamCMD Cache
+If using SteamCMD in the Docker image to update the server, verify the cache is cleared:
+
+  Access the container:
+  bash
+  Copy code
+  docker exec -it core-keeper-dedicated bash
+  Update the server manually within the container:
+  bash
+  Copy code
+  steamcmd +login anonymous +force_install_dir /home/steam/core-keeper-dedicated +app_update 19637
