@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'REPO_URL', defaultValue: '', description: 'The URL of the Git repository')
+        string(name: 'PROJECT_NAME', defaultValue: '', description: 'The project name in /project-files/projects')
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'Master', url: "${params.REPO_URL}"
+            }
+        }
+        stage('Copy Project to Nginx HTML') {
+            steps {
+                script {
+                    def projectPath = "${WORKSPACE}/project-files/projects/${params.PROJECT_NAME}"
+                    def nginxHtmlPath = "/usr/share/nginx/html"
+                    
+                    sh """
+                        cp -r ${projectPath}/* ${nginxHtmlPath}/
+                    """
+                }
+            }
+        }
+        stage('Restart Nginx') {
+            steps {
+                script {
+                    sh "service nginx restart"
+                }
+            }
+        }
+    }
+}
+
+#Path is imp
