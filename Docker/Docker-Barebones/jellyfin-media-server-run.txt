@@ -1,0 +1,8 @@
+#Jellyfin is a opensource media server
+docker run -d \
+  --name jellyfin \
+  -p 8096:8096 \
+  -v /home/agt/HDD/Plex:/media \
+  -v jellyfin_config:/config \
+  -v jellyfin_cache:/cache \
+  jellyfin/jellyfin

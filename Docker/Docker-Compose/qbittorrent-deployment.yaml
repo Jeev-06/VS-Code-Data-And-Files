@@ -1,0 +1,21 @@
+#Qbittorrent client on Linux
+
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=9091
+      - TORRENTING_PORT=6881
+      - BIND_ADDRESS=<Bind your IP Addr>
+    volumes:
+      - /path/to/qbittorrent/appdata:/config
+      - /home/agt/HDD/Torrent-Downloads:/downloads # updated path
+    ports:
+      - 9091:9091 # changed from 8080 to 9091
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped

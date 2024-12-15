@@ -1,0 +1,11 @@
+version: '3'
+services:
+  shinobi:
+    image: shinobisystems/shinobi
+    container_name: shinobi
+    ports:
+      - "8090:8080" # Map host port 8090 to container port 8080
+    volumes:
+      - ./shinobi_data:/config # Persistent data
+    environment:
+      - TZ=Asia/Kolkata  # Set your timezone

@@ -1,0 +1,13 @@
+#Swing music is a open source mp3 server:
+version: '3'
+
+services:
+  swingmusic:
+    image: swingmusic
+    container_name: swingmusic
+    volumes:
+      - /home/username/swing-music/music:/music
+      - /home/username/swing-music/music/config:/config
+    ports:
+      - "1970:1970"
+    restart: unless-stopped

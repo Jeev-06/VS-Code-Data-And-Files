@@ -1,0 +1,5 @@
+#To back-up data from docker container
+
+docker run --name backup --volumes-from portainer_data -v $(pwd):/backup busybox tar cvf /backup/portainer_backup.tar /data
+
+

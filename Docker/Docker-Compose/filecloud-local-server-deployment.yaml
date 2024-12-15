@@ -1,0 +1,43 @@
+#File cloud your own local file server
+
+version: '3'
+
+services:
+  mongodb:
+    container_name: 'filecloud.mongodb'
+    image: mongo:6.0.8
+    volumes:
+      - mongo_database:/data/db
+
+  server:
+    container_name: 'filecloud.server'
+    image: filecloud/filecloudserver23.1:latest
+    depends_on:
+      - mongodb
+      - preview
+    volumes:
+      - cloud_data:/var/clouddata
+      - var_html:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+
+  preview:
+    container_name: 'filecloud.preview'
+    image: filecloud/filecloudpreview22.1:latest
+    volumes:
+      - cloud_data:/var/clouddata
+      - var_html:/var/www/html
+
+  solr:
+    container_name: 'filecloud.solr'
+    image: filecloud/filecloudsolr21.3:latest
+    volumes:
+      - solr_data:/var/solr
+      - var_html:/var/www/html
+
+volumes:
+  mongo_database:
+  cloud_data:
+  solr_data:
+  var_html:
